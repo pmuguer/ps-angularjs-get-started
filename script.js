@@ -9,6 +9,8 @@
 
     var MainController = function ($scope, $http) {
 
+        $scope.commentId = "1";
+
         var onHTTPRequestComplete = function(response) {
             $scope.comment = response.data;
         };
@@ -17,9 +19,10 @@
             $scope.error = "Error accediendo al recurso REST";
         };
     
-        $http.get("https://jsonplaceholder.typicode.com/comments/2")
+        $http.get("https://jsonplaceholder.typicode.com/comments/" + $scope.commentId)
             .then(onHTTPRequestComplete, onHTTPRequestError);
-        $scope.message = "Hello AngularJS!";
+
+        $scope.message = "Json Placeholder Search";
 
     };
 

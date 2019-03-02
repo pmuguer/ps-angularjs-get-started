@@ -13,6 +13,13 @@
   <body ng-controller="MainController">
     <h1>{{ message }}</h1>
     <div>
+      <h2>Valor del modelo: {{ commentId }}</h2>
+      <h2>Ingrese la URL del recurso</h2>
+      <form name="searchComment">
+        <input type="search" placeholder="comment id" ng-model="commentId">
+        <input type="submit" value="Search">
+      </form>
+
       <h2>Datos obtenidos de JsonPlaceholder:</h2>
       <!-- Si hubo un error accediendo al servicio REST, mostrar un mensaje -->
       <div>{{ error }}</div>
