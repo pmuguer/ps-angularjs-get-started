@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html ng-app>
+<!-- Tengo que indicar cuál es el módulo que implementa la aplicación -->
+<html ng-app="getStartedExample1">
 
   <head>
     <script data-require="angular.js@1.6.0" data-semver="1.6.0" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.js"></script>
@@ -7,6 +8,7 @@
     <script src="script.js"></script>
   </head>
 
+  <!-- Uso el controller MainController, registrado en el módulo getStartedExample1 -->
   <body ng-controller="MainController">
     <h1>{{ message }}</h1>
   </body>
