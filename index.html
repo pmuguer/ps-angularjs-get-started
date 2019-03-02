@@ -6,11 +6,20 @@
     <script data-require="angular.js@1.6.0" data-semver="1.6.0" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.js"></script>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
+    <meta charset="utf-8">
   </head>
 
   <!-- Uso el controller MainController, registrado en el módulo getStartedExample1 -->
   <body ng-controller="MainController">
     <h1>{{ message }}</h1>
+    <div>
+      <div>First name: {{ person.firstName }}</div>
+      <div>Last name: {{ person.lastName }}</div>
+      <div>
+        <img src='{{ person.imgSrc }}' title="{{ person.firstName }} {{ person.lastName }}">
+      </div>
+    </div>
+    <h2>{{ person.lastName }}, {{ person.firstName }}</h2>
   </body>
 
 </html>

@@ -7,9 +7,16 @@
     // que sólo se estaría incluyendo una referencia
     var app = angular.module("getStartedExample1", []);
 
+    var person = {
+        firstName: "Juan Domingo",
+        lastName: "Perón",
+        imgSrc: "https://lamarcaeditora.com/admin/files/libros/1028/978-950-889-136-5.jpg"
+    };
+
     var MainController = function ($scope) {
 
         $scope.message = "Hello AngularJS!";
+        $scope.person = person;
 
     };
 
