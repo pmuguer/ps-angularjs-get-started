@@ -9,18 +9,20 @@
 
     var MainController = function ($scope, $http) {
 
-        // Inicializo commentId para que al ingresar se muestre el primer comentario
-        $scope.commentId = "1";
+        // Inicializo postId para que al ingresar se muestren los comentarios del 1er post
+        $scope.postId = "1";
+        $scope.url = "https://jsonplaceholder.typicode.com/posts/" + $scope.postId + "/comments/"
 
         // Función asociada via ng-click al submit
-        // Notar que no necesito el parámetro, porque ya está en el $scope (commentId)
+        // Notar que no necesito el parámetro, porque ya está en el $scope (postId)
         $scope.search = function() {
-            $http.get("https://jsonplaceholder.typicode.com/comments/" + $scope.commentId)
+            $scope.url = "https://jsonplaceholder.typicode.com/posts/" + $scope.postId + "/comments/"
+            $http.get($scope.url)
             .then(onHTTPRequestComplete, onHTTPRequestError);
         }
 
         var onHTTPRequestComplete = function(response) {
-            $scope.comment = response.data;
+            $scope.comments = response.data;
             // De forma análoga al caso de error, si el request fue exitoso tengo
             // que resetear error
             $scope.error = "";
@@ -30,10 +32,10 @@
             $scope.error = "Error accediendo al recurso REST";
             // Si no pude obtener datos, dejo en blanco para que no se muestren los
             // obtenidos en el último request válido
-            $scope.comment = "";
+            $scope.comments = "";
         };
     
-        $http.get("https://jsonplaceholder.typicode.com/comments/" + $scope.commentId)
+        $http.get($scope.url)
             .then(onHTTPRequestComplete, onHTTPRequestError);
 
         $scope.message = "Json Placeholder Search";
