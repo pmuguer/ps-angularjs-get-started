@@ -17,15 +17,18 @@
       <h2>Ingrese la URL del recurso</h2>
       <form name="searchComment">
         <input type="search" placeholder="comment id" ng-model="commentId">
-        <input type="submit" value="Search">
+        <!-- Notar que ng-click hace referencia a una función
+             (que se definirá dentro del $scope) -->
+        <input type="submit" value="Search" ng-click="search()">
       </form>
 
       <h2>Datos obtenidos de JsonPlaceholder:</h2>
       <!-- Si hubo un error accediendo al servicio REST, mostrar un mensaje -->
-      <div>{{ error }}</div>
-      <div>Mail: {{ comment.email }}</div>
-      <div>URL: {{ comment.name }}</div>
-      <div>
+      <div style="color:red">{{ error }}</div>
+      <ul>
+      <li>Mail: {{ comment.email }}</li>
+      <li>URL: {{ comment.name }}</li>
+      </ul>
         <!-- <img ng-src='{{ githubUserData.avatar }}' title="Avatar"> -->
       </div>
     </div>
