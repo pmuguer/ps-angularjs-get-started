@@ -14,6 +14,8 @@
     <h1>{{ message }}</h1>
     <div>
       <h2>Datos obtenidos de JsonPlaceholder:</h2>
+      <!-- Si hubo un error accediendo al servicio REST, mostrar un mensaje -->
+      <div>{{ error }}</div>
       <div>Mail: {{ comment.email }}</div>
       <div>URL: {{ comment.name }}</div>
       <div>

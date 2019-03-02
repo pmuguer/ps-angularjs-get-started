@@ -12,9 +12,13 @@
         var onHTTPRequestComplete = function(response) {
             $scope.comment = response.data;
         };
+
+        var onHTTPRequestError = function(reason) {
+            $scope.error = "Error accediendo al recurso REST";
+        };
     
         $http.get("https://jsonplaceholder.typicode.com/comments/2")
-            .then(onHTTPRequestComplete);
+            .then(onHTTPRequestComplete, onHTTPRequestError);
         $scope.message = "Hello AngularJS!";
 
     };
