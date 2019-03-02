@@ -13,13 +13,13 @@
   <body ng-controller="MainController">
     <h1>{{ message }}</h1>
     <div>
-      <div>First name: {{ person.firstName }}</div>
-      <div>Last name: {{ person.lastName }}</div>
+      <h2>Datos obtenidos de JsonPlaceholder:</h2>
+      <div>Mail: {{ comment.email }}</div>
+      <div>URL: {{ comment.name }}</div>
       <div>
-        <img ng-src='{{ person.imgSrc }}' title="{{ person.firstName }} {{ person.lastName }}">
+        <!-- <img ng-src='{{ githubUserData.avatar }}' title="Avatar"> -->
       </div>
     </div>
-    <h2>{{ person.lastName }}, {{ person.firstName }}</h2>
   </body>
 
 </html>
