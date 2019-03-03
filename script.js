@@ -1,16 +1,12 @@
 (function () {
+    // Obtengo la instancia del módulo definido en app.js
+    var app = angular.module("getStartedExample1");
 
-    // Defino el módulo getStartedExample1
-    // 
-    // Es importante incluir el segundo parámetro (empty array = []),
-    // porque de lo contrario no se estaría definiendo el módulo, sino
-    // que sólo se estaría incluyendo una referencia
-    var app = angular.module("getStartedExample1", []);
+    // MainController pasa a tener una funcionalidad más reducida.
+    // Sólo se encarga de la búsqueda y de disparar la búsqueda por
+    // timeout (countdown)
+    var MainController = function ($scope, $interval, $location) {
 
-    var MainController = function ($scope, jsonPlaceholder, $interval, $log,
-            $anchorScroll, $location) {
-
-        $scope.sortOrder = "+email";
         $scope.countdown = 5;
 
         var countdownInterval = null;
@@ -23,24 +19,6 @@
                 $interval.cancel(countdownInterval);
             }
         }
-
-        var onHTTPRequestComplete = function(data) {
-            $scope.comments = data;
-            // De forma análoga al caso de error, si el request fue exitoso tengo
-            // que resetear error
-            $scope.error = "";
-            // Seteo la URL a la sección a la que quiero scrollear
-            $location.hash("searchResults");
-            // Hago que el browser scrollee al anchor recién indicado en la URL
-            $anchorScroll();
-        };
-
-        var onHTTPRequestError = function(reason) {
-            $scope.error = "Error accediendo al recurso REST";
-            // Si no pude obtener datos, dejo en blanco para que no se muestren los
-            // obtenidos en el último request válido
-            $scope.comments = "";
-        };
 
         var decrementCountdown = function() {
             $scope.countdown -= 1;
@@ -55,13 +33,12 @@
             countdownInterval = $interval(decrementCountdown, 1000, 5);
         }
 
-        $scope.message = "Json Placeholder Search";
         startCountdown();
 
     };
 
     // Registro el controller en el módulo recién creado
-    app.controller("MainController", ["$scope", "jsonPlaceholder", "$interval", "$log",
-                   "$anchorScroll", "$location", MainController]);
+    app.controller("MainController", ["$scope", "$interval",
+                   "$location", MainController]);
 
 }());

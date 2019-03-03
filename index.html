@@ -4,49 +4,22 @@
 
   <head>
     <script data-require="angular.js@1.6.0" data-semver="1.6.0" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.js"></script>
+    <script data-require="angular-route@1.5.8" data-semver="1.5.8" src="https://code.angularjs.org/1.5.8/angular-route.js"></script>
     <link rel="stylesheet" href="style.css" />
+    <!-- Es importante tener en cuenta que app.js tiene ir primero porque es el script
+         en el que se define la app (que es un módulo de AngularJS) -->
+    <script src="app.js"></script>
     <script src="script.js"></script>
     <script src="jsonplaceholder.js"></script>
+
     <meta charset="utf-8">
   </head>
 
-  <!-- Uso el controller MainController, registrado en el módulo getStartedExample1 -->
-  <body ng-controller="MainController">
-    <h1>{{ message }}</h1>
-    <div>
-      <h2>Countdown: {{ countdown }}</h2>
-      <h2>Valor de $scope.postId: {{ postId }}</h2>
-      <h2>Ingrese el id del post para el que se quieren obtener los comentarios:</h2>
-      <form name="searchComment">
-        <input type="search" placeholder="post id" ng-model="postId">
-        <!-- Notar que ng-click hace referencia a una función
-             (que se definirá dentro del $scope) -->
-        <input type="submit" value="Search" ng-click="search()">
-      </form>
-
-      <h2>Ordenar resultados por:</h2>
-
-      <input type="radio" name="sort" value="+email" ng-model="sortOrder">Ascendente<br>
-      <input type="radio" name="sort" value="-email" ng-model="sortOrder">Descendente<br>
-
-      <h2 id="searchResults">Datos obtenidos de JsonPlaceholder:</h2>
-      <!-- Si hubo un error accediendo al servicio REST, mostrar un mensaje -->
-      <div style="color:red">{{ error }}</div>
-      <table>
-          <thead ng-show="comments">
-              <tr>
-                  <th>Mail</th>
-                  <th>name</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr ng-repeat="comment in comments | orderBy:sortOrder">
-                  <td>{{ comment.email }}</td>
-                  <td>{{ comment.name }}</td>
-              </tr>
-          </tbody>
-      </table>
-    </div>
+  <body>
+    <h1>Json Placeholder search</h1>
+    <!-- El routing engine se encargará de cargar las vistas que corresponda -->
+    <div ng-view></div>
   </body>
+
 
 </html>

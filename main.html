@@ -1,0 +1,43 @@
+<!-- Uso el controller MainController, registrado en el módulo getStartedExample1 
+     Notar que este template sólo tiene un fragmento de html, los elementos <html>
+     y <body> (entre otros), quedan en el layout view (index.html).
+     Como ng-route se encarga de indicar qué controlador maneja el template,
+     ya no es necesario el atributo ng-controller -->
+
+<div>
+    <div>
+      <h2>Countdown: {{ countdown }}</h2>
+      <h2>Valor de $scope.postId: {{ postId }}</h2>
+      <h2>Ingrese el id del post para el que se quieren obtener los comentarios:</h2>
+      <form name="searchComment">
+        <input type="search" placeholder="post id" ng-model="postId">
+        <!-- Notar que ng-click hace referencia a una función
+             (que se definirá dentro del $scope) -->
+        <input type="submit" value="Search" ng-click="search()">
+      </form>
+    </div>
+      <!-- Todo lo que sigue se va a pasar a otro template
+
+      <h2>Ordenar resultados por:</h2>
+
+      <input type="radio" name="sort" value="+email" ng-model="sortOrder">Ascendente<br>
+      <input type="radio" name="sort" value="-email" ng-model="sortOrder">Descendente<br>
+
+      <h2 id="searchResults">Datos obtenidos de JsonPlaceholder:</h2>
+      <div style="color:red">{{ error }}</div>
+      <table>
+          <thead ng-show="comments">
+              <tr>
+                  <th>Mail</th>
+                  <th>name</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="comment in comments | orderBy:sortOrder">
+                  <td>{{ comment.email }}</td>
+                  <td>{{ comment.name }}</td>
+              </tr>
+          </tbody>
+      </table>
+    </div> -->
+</div>
