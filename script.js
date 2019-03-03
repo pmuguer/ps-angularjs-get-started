@@ -7,7 +7,7 @@
     // que sólo se estaría incluyendo una referencia
     var app = angular.module("getStartedExample1", []);
 
-    var MainController = function ($scope, $http, $interval) {
+    var MainController = function ($scope, $http, $interval, $log) {
 
         $scope.url = "https://jsonplaceholder.typicode.com/posts/" + $scope.postId + "/comments/";
         $scope.sortOrder = "+email";
@@ -17,6 +17,7 @@
         // Notar que no necesito el parámetro, porque ya está en el $scope (postId)
         $scope.search = function() {
             $scope.url = "https://jsonplaceholder.typicode.com/posts/" + $scope.postId + "/comments/"
+            $log.info("Searching for: " + $scope.url);
             $http.get($scope.url)
             .then(onHTTPRequestComplete, onHTTPRequestError);
         }
@@ -54,6 +55,6 @@
     };
 
     // Registro el controller en el módulo recién creado
-    app.controller("MainController", ["$scope", "$http", "$interval", MainController]);
+    app.controller("MainController", ["$scope", "$http", "$interval", "$log", MainController]);
 
 }());
