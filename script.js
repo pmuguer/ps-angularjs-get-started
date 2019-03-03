@@ -8,7 +8,7 @@
     var app = angular.module("getStartedExample1", []);
 
     var MainController = function ($scope, $http, $interval, $log,
-            $document, $anchorScroll, $location) {
+            $anchorScroll, $location) {
 
         $scope.url = "https://jsonplaceholder.typicode.com/posts/" + $scope.postId + "/comments/";
         $scope.sortOrder = "+email";
@@ -32,6 +32,10 @@
             // De forma análoga al caso de error, si el request fue exitoso tengo
             // que resetear error
             $scope.error = "";
+            // Seteo la URL a la sección a la que quiero scrollear
+            $location.hash("searchResults");
+            // Hago que el browser scrollee al anchor recién indicado en la URL
+            $anchorScroll();
         };
 
         var onHTTPRequestError = function(reason) {
@@ -57,19 +61,10 @@
         $scope.message = "Json Placeholder Search";
         startCountdown();
 
-        var onDocumentReady = function() {
-            // Seteo la URL a la sección a la que quiero scrollear
-            $location.hash("searchSection");
-            // Hago que el browser scrollee al anchor recién indicado en la URL
-            $anchorScroll();
-        };
-
-        $document.ready(onDocumentReady);
-
     };
 
     // Registro el controller en el módulo recién creado
     app.controller("MainController", ["$scope", "$http", "$interval", "$log",
-                   "$document", "$anchorScroll", "$location", MainController]);
+                   "$anchorScroll", "$location", MainController]);
 
 }());
