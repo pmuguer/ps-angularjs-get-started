@@ -24,10 +24,8 @@
       </form>
 
       <h2>Ordenar resultados por:</h2>
-      <select ng-model="sortOrder">
-        <option value="+email">Ascendente</option>
-        <option value="-email">Descendente</option>
-      </select>
+      <input type="radio" name="sort" value="+email" ng-model="sortOrder">Ascendente<br>
+      <input type="radio" name="sort" value="-email" ng-model="sortOrder">Descendente<br>
 
       <h2>Datos obtenidos de JsonPlaceholder:</h2>
       <!-- Si hubo un error accediendo al servicio REST, mostrar un mensaje -->
