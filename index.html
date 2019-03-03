@@ -23,6 +23,12 @@
         <input type="submit" value="Search" ng-click="search()">
       </form>
 
+      <h2>Ordenar resultados por:</h2>
+      <select ng-model="sortOrder">
+        <option value="+email">Ascendente</option>
+        <option value="-email">Descendente</option>
+      </select>
+
       <h2>Datos obtenidos de JsonPlaceholder:</h2>
       <!-- Si hubo un error accediendo al servicio REST, mostrar un mensaje -->
       <div style="color:red">{{ error }}</div>
@@ -34,7 +40,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="comment in comments | orderBy:'-email'">
+          <tr ng-repeat="comment in comments | orderBy:sortOrder">
             <td>{{ comment.email }}</td>
             <td>{{ comment.name }}</td>
           </tr>

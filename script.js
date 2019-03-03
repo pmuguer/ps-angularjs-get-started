@@ -12,6 +12,7 @@
         // Inicializo postId para que al ingresar se muestren los comentarios del 1er post
         $scope.postId = "1";
         $scope.url = "https://jsonplaceholder.typicode.com/posts/" + $scope.postId + "/comments/"
+        $scope.sortOrder = "+email"
 
         // Función asociada via ng-click al submit
         // Notar que no necesito el parámetro, porque ya está en el $scope (postId)
