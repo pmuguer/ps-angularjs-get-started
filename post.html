@@ -1,0 +1,19 @@
+<div>
+    <h2>
+        Post id: {{ postId }}
+    </h2>
+    <table>
+        <thead ng-show="comments">
+            <tr>
+                <th>Mail</th>
+                <th>name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="comment in comments | orderBy:sortOrder">
+                <td>{{ comment.email }}</td>
+                <td>{{ comment.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

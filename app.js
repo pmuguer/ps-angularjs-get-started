@@ -9,6 +9,11 @@
                 templateUrl: "main.html",
                 controller: "MainController"
             })
+            // 
+            .when("/post/:postId", {
+                templateUrl: "post.html",
+                controller: "PostController"
+            })
             .otherwise({redirectTo: "/main"});
     });
 

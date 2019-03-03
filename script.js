@@ -12,12 +12,15 @@
         var countdownInterval = null;
         // Función asociada via ng-click al submit
         // Notar que no necesito el parámetro, porque ya está en el $scope (postId)
+        // 
+        // En la parte 6 del tutorial, la llamada al servicio pasa a PostController.js
+        // Lo único que hace el search es cambiar la ruta, para que el controller
+        // PostController acceda al servicio en base al id provisto en la URL
         $scope.search = function() {
-            jsonPlaceholder.getComments($scope.postId)
-                .then(onHTTPRequestComplete, onHTTPRequestError);
             if (countdownInterval) {
                 $interval.cancel(countdownInterval);
             }
+            $location.path("/post/" + $scope.postId)
         }
 
         var decrementCountdown = function() {
