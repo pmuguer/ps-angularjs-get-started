@@ -54,6 +54,6 @@
     };
 
     // Registro el controller en el módulo recién creado
-    app.controller("MainController", ["$scope", "$http", MainController]);
+    app.controller("MainController", ["$scope", "$http", "$interval", MainController]);
 
 }());
