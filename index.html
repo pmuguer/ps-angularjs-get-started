@@ -24,6 +24,7 @@
       </form>
 
       <h2>Ordenar resultados por:</h2>
+
       <input type="radio" name="sort" value="+email" ng-model="sortOrder">Ascendente<br>
       <input type="radio" name="sort" value="-email" ng-model="sortOrder">Descendente<br>
 
@@ -31,7 +32,7 @@
       <!-- Si hubo un error accediendo al servicio REST, mostrar un mensaje -->
       <div style="color:red">{{ error }}</div>
       <table>
-        <thead>
+        <thead ng-show="comments">
           <tr>
             <th>Mail</th>
             <th>name</th>

@@ -9,8 +9,6 @@
 
     var MainController = function ($scope, $http) {
 
-        // Inicializo postId para que al ingresar se muestren los comentarios del 1er post
-        $scope.postId = "1";
         $scope.url = "https://jsonplaceholder.typicode.com/posts/" + $scope.postId + "/comments/"
         $scope.sortOrder = "+email"
 
@@ -34,10 +32,7 @@
             // Si no pude obtener datos, dejo en blanco para que no se muestren los
             // obtenidos en el último request válido
             $scope.comments = "";
-        };
-    
-        $http.get($scope.url)
-            .then(onHTTPRequestComplete, onHTTPRequestError);
+        };    
 
         $scope.message = "Json Placeholder Search";
 
