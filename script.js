@@ -7,10 +7,9 @@
     // que sólo se estaría incluyendo una referencia
     var app = angular.module("getStartedExample1", []);
 
-    var MainController = function ($scope, $http, $interval, $log,
+    var MainController = function ($scope, jsonPlaceholder, $interval, $log,
             $anchorScroll, $location) {
 
-        $scope.url = "https://jsonplaceholder.typicode.com/posts/" + $scope.postId + "/comments/";
         $scope.sortOrder = "+email";
         $scope.countdown = 5;
 
@@ -18,17 +17,15 @@
         // Función asociada via ng-click al submit
         // Notar que no necesito el parámetro, porque ya está en el $scope (postId)
         $scope.search = function() {
-            $scope.url = "https://jsonplaceholder.typicode.com/posts/" + $scope.postId + "/comments/"
-            $log.info("Searching for: " + $scope.url);
-            $http.get($scope.url)
-            .then(onHTTPRequestComplete, onHTTPRequestError);
+            jsonPlaceholder.getComments($scope.postId)
+                .then(onHTTPRequestComplete, onHTTPRequestError);
             if (countdownInterval) {
                 $interval.cancel(countdownInterval);
             }
         }
 
-        var onHTTPRequestComplete = function(response) {
-            $scope.comments = response.data;
+        var onHTTPRequestComplete = function(data) {
+            $scope.comments = data;
             // De forma análoga al caso de error, si el request fue exitoso tengo
             // que resetear error
             $scope.error = "";
@@ -64,7 +61,7 @@
     };
 
     // Registro el controller en el módulo recién creado
-    app.controller("MainController", ["$scope", "$http", "$interval", "$log",
+    app.controller("MainController", ["$scope", "jsonPlaceholder", "$interval", "$log",
                    "$anchorScroll", "$location", MainController]);
 
 }());
