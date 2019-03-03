@@ -31,7 +31,20 @@
       <h2>Datos obtenidos de JsonPlaceholder:</h2>
       <!-- Si hubo un error accediendo al servicio REST, mostrar un mensaje -->
       <div style="color:red">{{ error }}</div>
-      <div ng-include="'http://localhost:8000/comment_list.html'"></div>
+      <table>
+          <thead ng-show="comments">
+              <tr>
+                  <th>Mail</th>
+                  <th>name</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="comment in comments | orderBy:sortOrder">
+                  <td>{{ comment.email }}</td>
+                  <td>{{ comment.name }}</td>
+              </tr>
+          </tbody>
+      </table>
     </div>
   </body>
 
