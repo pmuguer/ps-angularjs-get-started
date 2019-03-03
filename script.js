@@ -40,7 +40,7 @@
 
     };
 
-    // Registro el controller en el módulo recién creado
+    // Registro el controller en el módulo
     app.controller("MainController", ["$scope", "$interval",
                    "$location", MainController]);
 
