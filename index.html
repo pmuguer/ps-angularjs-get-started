@@ -12,7 +12,20 @@
   <!-- Uso el controller MainController, registrado en el módulo getStartedExample1 -->
   <body ng-controller="MainController">
     <h1>{{ message }}</h1>
-    <div>
+    <!-- Agrego esta tabla sólo para que sea necesario scrollear para hacer la búsqueda -->
+    <table style="width: 1000px; height: 800px;">
+      <thead>
+        <tr>
+          <th>Una tabla</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>una fila</td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="searchSection">
       <h2>Countdown: {{ countdown }}</h2>
       <h2>Valor de $scope.postId: {{ postId }}</h2>
       <h2>URL: {{ url }}</h2>

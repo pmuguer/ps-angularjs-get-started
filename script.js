@@ -7,12 +7,14 @@
     // que sólo se estaría incluyendo una referencia
     var app = angular.module("getStartedExample1", []);
 
-    var MainController = function ($scope, $http, $interval, $log) {
+    var MainController = function ($scope, $http, $interval, $log,
+            $document, $anchorScroll, $location) {
 
         $scope.url = "https://jsonplaceholder.typicode.com/posts/" + $scope.postId + "/comments/";
         $scope.sortOrder = "+email";
         $scope.countdown = 5;
 
+        var countdownInterval = null;
         // Función asociada via ng-click al submit
         // Notar que no necesito el parámetro, porque ya está en el $scope (postId)
         $scope.search = function() {
@@ -20,6 +22,9 @@
             $log.info("Searching for: " + $scope.url);
             $http.get($scope.url)
             .then(onHTTPRequestComplete, onHTTPRequestError);
+            if (countdownInterval) {
+                $interval.cancel(countdownInterval);
+            }
         }
 
         var onHTTPRequestComplete = function(response) {
@@ -46,15 +51,25 @@
         }
 
         var startCountdown = function() {
-            $interval(decrementCountdown, 1000, 5);
+            countdownInterval = $interval(decrementCountdown, 1000, 5);
         }
 
         $scope.message = "Json Placeholder Search";
         startCountdown();
 
+        var onDocumentReady = function() {
+            // Seteo la URL a la sección a la que quiero scrollear
+            $location.hash("searchSection");
+            // Hago que el browser scrollee al anchor recién indicado en la URL
+            $anchorScroll();
+        };
+
+        $document.ready(onDocumentReady);
+
     };
 
     // Registro el controller en el módulo recién creado
-    app.controller("MainController", ["$scope", "$http", "$interval", "$log", MainController]);
+    app.controller("MainController", ["$scope", "$http", "$interval", "$log",
+                   "$document", "$anchorScroll", "$location", MainController]);
 
 }());
