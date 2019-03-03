@@ -7,10 +7,11 @@
     // que sólo se estaría incluyendo una referencia
     var app = angular.module("getStartedExample1", []);
 
-    var MainController = function ($scope, $http) {
+    var MainController = function ($scope, $http, $interval) {
 
-        $scope.url = "https://jsonplaceholder.typicode.com/posts/" + $scope.postId + "/comments/"
-        $scope.sortOrder = "+email"
+        $scope.url = "https://jsonplaceholder.typicode.com/posts/" + $scope.postId + "/comments/";
+        $scope.sortOrder = "+email";
+        $scope.countdown = 5;
 
         // Función asociada via ng-click al submit
         // Notar que no necesito el parámetro, porque ya está en el $scope (postId)
@@ -32,13 +33,27 @@
             // Si no pude obtener datos, dejo en blanco para que no se muestren los
             // obtenidos en el último request válido
             $scope.comments = "";
-        };    
+        };
+
+        var decrementCountdown = function() {
+            $scope.countdown -= 1;
+            if ($scope.countdown == 0) {
+                var randomInt = Math.floor((Math.random() * 100 + 1));
+                $scope.postId = randomInt;
+                $scope.search();
+            }
+        }
+
+        var startCountdown = function() {
+            $interval(decrementCountdown, 1000, 5);
+        }
 
         $scope.message = "Json Placeholder Search";
+        startCountdown();
 
     };
 
     // Registro el controller en el módulo recién creado
-    app.controller("MainController", MainController);
+    app.controller("MainController", ["$scope", "$http", MainController]);
 
 }());
