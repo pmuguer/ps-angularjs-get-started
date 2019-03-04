@@ -13,7 +13,7 @@
         <tbody>
             <tr ng-repeat="collaborator in collaborators">
                 <td>{{ collaborator.login }}</td>
-                <td><img style="width: 30px; height: 30px;" src="'{{ collaborator.avatar_url }}''"></td>
+                <td><ng-img style="width: 30px; height: 30px;" src="{{ collaborator.avatar_url }}"></td>
             </tr>
         </tbody>
     </table>
