@@ -7,10 +7,10 @@
 <div>
     <div>
       <h2>Countdown: {{ countdown }}</h2>
-      <h2>Valor de $scope.postId: {{ postId }}</h2>
-      <h2>Ingrese el id del post para el que se quieren obtener los comentarios:</h2>
-      <form name="searchComment">
-        <input type="search" placeholder="post id" ng-model="postId">
+      <h2>Valor de $scope.username: {{ username }}</h2>
+      <h2>Ingrese el nombre del usuario a buscar:</h2>
+      <form name="searchUser">
+        <input type="search" placeholder="username" ng-model="username">
         <!-- Notar que ng-click hace referencia a una función
              (que se definirá dentro del $scope) -->
         <input type="submit" value="Search" ng-click="search()">

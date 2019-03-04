@@ -7,33 +7,31 @@
     // timeout (countdown)
     var MainController = function ($scope, $interval, $location) {
 
-        $scope.countdown = 5;
+        $scope.countdown = 30;
 
         var countdownInterval = null;
         // Función asociada via ng-click al submit
-        // Notar que no necesito el parámetro, porque ya está en el $scope (postId)
+        // Notar que no necesito el parámetro, porque ya está en el $scope
         // 
-        // En la parte 6 del tutorial, la llamada al servicio pasa a PostController.js
         // Lo único que hace el search es cambiar la ruta, para que el controller
-        // PostController acceda al servicio en base al id provisto en la URL
+        // UserController acceda al servicio en base al id provisto en la URL
         $scope.search = function() {
             if (countdownInterval) {
                 $interval.cancel(countdownInterval);
             }
-            $location.path("/post/" + $scope.postId)
+            $location.path("/user/" + $scope.username)
         }
 
         var decrementCountdown = function() {
             $scope.countdown -= 1;
             if ($scope.countdown == 0) {
-                var randomInt = Math.floor((Math.random() * 100 + 1));
-                $scope.postId = randomInt;
+                $scope.username = "pepe";
                 $scope.search();
             }
         }
 
         var startCountdown = function() {
-            countdownInterval = $interval(decrementCountdown, 1000, 5);
+            countdownInterval = $interval(decrementCountdown, 1000, 30);
         }
 
         startCountdown();

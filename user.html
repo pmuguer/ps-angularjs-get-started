@@ -1,0 +1,28 @@
+<div>
+    <h2>
+        Username: {{ username }}
+    </h2>
+    <a href="#/main/">Back to search</a>
+    <h2>Algunos datos del usuario</h2>
+    <ul>
+        <li>avatar_url: {{ user.avatar_url }}</li>
+        <li>node_id: {{ user.node_id }}</li>
+        <li>score: {{ user.score }}</li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>repo git_url</th>
+                <th>stargazers_count</th>
+                <th>created_at</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="repo in repos">
+                <td>{{ repo.git_url }}</td>
+                <td>{{ repo.stargazers_count }}</td>
+                <td>{{ repo.created_at }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

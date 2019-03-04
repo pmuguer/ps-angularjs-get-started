@@ -10,9 +10,9 @@
                 controller: "MainController"
             })
             // 
-            .when("/post/:postId", {
-                templateUrl: "post.html",
-                controller: "PostController"
+            .when("/user/:username", {
+                templateUrl: "user.html",
+                controller: "UserController"
             })
             .otherwise({redirectTo: "/main"});
     });
