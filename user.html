@@ -19,7 +19,8 @@
         </thead>
         <tbody>
             <tr ng-repeat="repo in repos">
-                <td>{{ repo.git_url }}</td>
+                <!-- Agrego link a la URL de la vista que está asociada a RepoController -->
+                <td><a href="/repo/{{ username }}/{{ repo.name }}">{{ repo.git_url }}</a></td>
                 <td>{{ repo.stargazers_count }}</td>
                 <td>{{ repo.created_at }}</td>
             </tr>

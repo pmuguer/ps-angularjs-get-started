@@ -1,0 +1,19 @@
+<div>
+    <h1>Repo details</h1>
+    <h2>{{ username }} - {{ reponame }}</h2>
+    <h2>List of collaborators</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Collaborator</th>
+                <th>Avatar</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="collaborator in collaborators">
+            <tr>
+                <td>{{ collaborator.username }}</td>
+                <td><ng-img src='{{ collaborator.avatar }}'></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
