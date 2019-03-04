@@ -20,4 +20,8 @@
             .otherwise({redirectTo: "/main"});
     });
 
+    app.config(function($sceDelegateProvider) {
+        $sceDelegateProvider.resourceUrlWhitelist(['**']);
+    });
+
 }());
